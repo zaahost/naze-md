@@ -62,7 +62,7 @@ global.limitawal = {
 }
 global.thumb = fs.readFileSync('./media/image/naze.jpg')
 global.faall = fs.readFileSync('./media/image/fake.jpg')
-global.mygit = 'https://github.com/nazedev'
+global.mygit = 'https://github.com/zaahost'
 global.myyt = 'https://youtube.com/channel/UCrFUDpiEgIxEljiqki22-yg'
 global.myytv = 'https://youtube.com/channel/UCrFUDpiEgIxEljiqki22-yg'
 global.mygc = "https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T"
