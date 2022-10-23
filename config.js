@@ -31,11 +31,11 @@ global.APIKeys = {
 }
 
 // Other
-global.owner = ['6285875158363']
-global.ownernomer = "6285875158363"
-global.premium = ['6285875158363']
-global.packname = 'Sticker By'
-global.author = 'Naze Dev'
+global.owner = ['6283857687084']
+global.ownernomer = "6283857687084"
+global.premium = ['6283857687084,6283107325844']
+global.packname = 'Sticker By XyroxYT'
+global.author = 'JahOfc'
 global.sessionName = 'nazedev'  //jangan diganti bro nanti error
 global.jumlha = '999'
 global.jumhal = '100000000000000'
@@ -43,7 +43,7 @@ global.jumlah = '1000000000'
 global.prefa = ['','!','.','#','&']
 global.sp = ''
 global.mess = {
-    success: '✅Done',
+    success: '✅Done masee',
     admin: 'Fitur Khusus Admin Group!',
     botAdmin: 'Bot Harus Menjadi Admin Terlebih Dahulu!',
     premime: 'Fitur Khusus Premium Kalo Mau Daftar Ketik Sewa',
@@ -66,9 +66,9 @@ global.mygit = 'https://github.com/nazedev'
 global.myyt = 'https://youtube.com/c/Nazedev'
 global.myytv = 'https://youtu.be/ey7qLuRBm5Y'
 global.mygc = "https://chat.whatsapp.com/Khpnk6svwIhCIvx91Xi0Vf"
-global.botname = 'Naze Dev'
-global.akulaku = 'Bot By Naze'
-global.ytname = 'YT NAZE'
+global.botname = 'Xyrox'
+global.akulaku = 'Bot By Jah'
+global.ytname = 'YT Xyrox27'
 
 
 let file = require.resolve(__filename)
