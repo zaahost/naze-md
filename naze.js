@@ -48,7 +48,7 @@ const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //ubah di config biar ngk emror
+const nyoutube = ('© Jah Ofc\nGRUP :\nhttps://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 gambar = fs.readFileSync('./media/image/naze.jpg')
@@ -1412,7 +1412,7 @@ break
             }
             }
             break
-            case 'antilink on': case 'antilink off': {
+            case 'antilink': {
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -3583,12 +3583,22 @@ let capt = `⭔ Title: ${judul}
             case 'rules': {
 rules = `╭──❍ *Rules BOT*
 │
-│ *Intinya Jangan Spam❗*
+│ *No Spam❗*
+│ *No Kirvir❗*
+│ *No Tlpn/vc❗*
 │
 ╰────❍`
 let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '👑Sewa' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
             }
+            case 'jb': {
+shop = `╭──❍ *SHOP MENU*
+│
+│ *LAGI UPDATE BG❗*
+│
+╰────❍`
+let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'All Menu📄' }, type: 1 },
+            await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
             break
             case 'sponsor': {
             if (!m.isGroup) throw mess.group
@@ -4407,7 +4417,7 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │
 ╰────❍
 _Link Grup_\n_https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T_`
-                let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                let buttons = [{ buttonId: 'jb', buttonText: { displayText: 'shop🏬' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
             }
             break
