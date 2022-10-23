@@ -3591,14 +3591,7 @@ rules = `╭──❍ *Rules BOT*
 let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '👑Sewa' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
             }
-            case 'jb': {
-shop = `╭──❍ *SHOP MENU*
-│
-│ *LAGI UPDATE BG❗*
-│
-╰────❍`
-let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'All Menu📄' }, type: 1 },
-            await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
+
             break
             case 'sponsor': {
             if (!m.isGroup) throw mess.group
@@ -4417,7 +4410,7 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │
 ╰────❍
 _Link Grup_\n_https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T_`
-                let buttons = [{ buttonId: 'jb', buttonText: { displayText: 'shop🏬' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT*' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
             }
             break
