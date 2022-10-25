@@ -1120,13 +1120,7 @@ break
 		await naze.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
-	case 'sound': {
-╭──❍
-│```SILAHKAN KETIK```
-│*sound1-sound161*
-│```CONTOH : sound1```
-╰────❍`
-	break
+	
 	case 'demote': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
@@ -4089,27 +4083,7 @@ vice = `╭──❍ *Voice Changer*
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, vice, nyoutube, m, {quoted: fkontak})
             }
-            break
-            case 'mowner': {
-oner = `╭──❍ *BioData*
-│
-│*ɴᴀᴍᴇ:* JAH OFC
-│*ᴀɢᴇ:* 14ᵗʰ
-│*sᴛᴀᴛᴜs:* jomblo :v
-│
-│*ʙɪʀᴛʜᴅᴀʏ:* 1 april 2009
-│*ᴀᴅᴅʀᴇss:* Indonesia, sumatra selatan, prabumulih
-│
-│*- - sᴋɪʟʟs: - -* 
-│> JavaScript [89.7%]
-│> Python [13.4%]
-│> CSS [35.1%]
-│> Html [60.2%]
-│
-╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, oner, nyoutube, m, {quoted: fkontak})
-            }
+
             break
             case 'allmenu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
@@ -4198,7 +4172,6 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │⭔ ${prefix}couple
 │⭔ ${prefix}anime
 │⭔ ${prefix}waifu
-│⭔ ${prefix}sound
 │
 ╰────❍
 ╭──❍ *Text Pro Menu*
