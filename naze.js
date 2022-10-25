@@ -48,7 +48,7 @@ const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('© Jah Ofc\nGRUP :\nhttps://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T')  //ubah di config biar ngk emror
+const nyoutube = ('© JahOfc\nGRUP :\nhttps://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 gambar = fs.readFileSync('./media/image/naze.jpg')
@@ -985,12 +985,12 @@ break
             }
             break
             case 'sc': {
-                m.reply('https://wa.me/6283857687084')
+                m.reply('CHT WA OWNER KAK : https://wa.me/6283857687084')
             }
             break		 
             case 'subsyt': {
-            let jawab = `*${ucapanWaktu}*\n*Silahkan Klik Link Ini*`
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+            let jawab = `*${ucapanWaktu}*\n*INI NAMA YT KU : Xyrox27*`
+            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA BOT' }, type: 1 }]
             let buttonMessage = {
   document: fs.readFileSync('./media/doc/fake.pptx'),
   fileName : akulaku + (` | Halo ${pushname}`),
@@ -3592,6 +3592,21 @@ let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu'
             await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
             }
 
+case 'jb': {
+rules = `╭──❍ *SHOP MENU*
+│
+│ *SEWA BOT 10K MANEN*
+│ *JASA RUN BOT 25K MANEN*
+│ *SCRIPT BOT 10K NO ENC*
+│ 
+│
+│ *INFO LENGKAP CEK LINK DIBAWAH INI*
+│ *https://wa.me/p/5631273446920627/6283107322844*
+╰────❍`
+let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ALL MENU' }, type: 1 }]
+            await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
+            }
+            
             break
             case 'sponsor': {
             if (!m.isGroup) throw mess.group
@@ -3645,7 +3660,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Wit* : ${timur} WIT
 ╰──❍`
             let ments = [ownernya, me, ini_mark]
-            let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+            let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ALL MENU' }, type: 1 },{ buttonId: 'help', buttonText: { displayText: 'SIMPLE MENU' }, type: 1 }]
             let buttonMessage = {
   document: fs.readFileSync('./media/doc/fake.pptx'),
   fileName : akulaku + (` | Halo ${pushname}`),
@@ -3677,8 +3692,9 @@ let alfamart = `628111500959@s.whatsapp.net`
             let kukiw = `*Kak ${pushname}*`
                 let sections = [
                 {
-	           title: ' ∫ » Sewa Bot? –––––––·•',
+	           title: ' ∫ » MENU UTAMA–––––––·•',
 	           rows: [
+	            {title: "🔹 • ALL MENU", rowId: `allmenu`, description: `KLIK UNTUK ALL MENU`},
 	            {title: "〽️ • Sewa", rowId: `donasi`, description: `KLIK UNTUK SEWA BOT`},
                 {title: "📴 • Owner", rowId: `owner`, description: `KLIK UNTUK BERTANYA KEPADA OWNER`}
 	            ]
@@ -4410,7 +4426,7 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │
 ╰────❍
 _Link Grup_\n_https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T_`
-                let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT*' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT' }, type: 1 },{ buttonId: 'jb', buttonText: { displayText: 'SHOP MENU' }, type: 1 }]
             naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
             }
             break
