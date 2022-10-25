@@ -1120,6 +1120,13 @@ break
 		await naze.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
+	case 'sound': {
+╭──❍
+│```SILAHKAN KETIK```
+│*sound1-sound161*
+│```CONTOH : sound1```
+╰────❍`
+	break
 	case 'demote': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
@@ -2532,8 +2539,8 @@ break
                 m.reply(mess.wait)
                 let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
                 let random = anu[Math.floor(Math.random() * anu.length)]
-                naze.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
-                naze.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Cowok nya` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Cewek nya` }, { quoted: m })
             }
 	    break
             case 'coffe': case 'kopi': {
@@ -3591,21 +3598,6 @@ rules = `╭──❍ *Rules BOT*
 let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '👑Sewa' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
             }
-
-case 'jb': {
-rules = `╭──❍ *SHOP MENU*
-│
-│ *SEWA BOT 10K MANEN*
-│ *JASA RUN BOT 25K MANEN*
-│ *SCRIPT BOT 10K NO ENC*
-│ 
-│
-│ *INFO LENGKAP CEK LINK DIBAWAH INI*
-│ *https://wa.me/p/5631273446920627/6283107322844*
-╰────❍`
-let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ALL MENU' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
-            }
             
             break
             case 'sponsor': {
@@ -3717,7 +3709,7 @@ let alfamart = `628111500959@s.whatsapp.net`
                 {title: "✦  「 Anonymous 」", rowId: `manonymous`, description: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
                 {title: "✦  「 Islamic 」", rowId: `mislamic`, description: `╰ ► 🕌Masyaallah Brother`},
                 {title: "✦  「 Voice 」", rowId: `mvoice`, description: `╰ ► 🎶Req Lagu Apa Ngab?`},
-                {title: "✦  「 Owner 」", rowId: `mowner`, description: `╰ ► 🎟Jangan Ganggu Ownerku😡`}
+                {title: "✦  「 BioData 」", rowId: `mowner`, description: `╰ ► Jangan Kepoo!! 😡`}
                 ]
                 },{
 	           title: ' ∫ » SUPPORT ME –––––––·•',
@@ -4099,19 +4091,20 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
             }
             break
             case 'mowner': {
-oner = `╭──❍ *Owner Menu*
+oner = `╭──❍ *BioData*
 │
-│⭔ ${prefix}react [emoji]
-│⭔ ${prefix}chat [option]
-│⭔ ${prefix}join [link]
-│⭔ ${prefix}leave
-│⭔ ${prefix}block @user
-│⭔ ${prefix}unblock @user
-│⭔ ${prefix}bcgroup [text]
-│⭔ ${prefix}bcall [text]
-│⭔ ${prefix}setppbot [image]
-│⭔ ${prefix}setexif
-│⭔ ${prefix}setmenu [option]
+│*ɴᴀᴍᴇ:* JAH OFC
+│*ᴀɢᴇ:* 14ᵗʰ
+│*sᴛᴀᴛᴜs:* jomblo :v
+│
+│*ʙɪʀᴛʜᴅᴀʏ:* 1 april 2009
+│*ᴀᴅᴅʀᴇss:* Indonesia, sumatra selatan, prabumulih
+│
+│*- - sᴋɪʟʟs: - -* 
+│> JavaScript [89.7%]
+│> Python [13.4%]
+│> CSS [35.1%]
+│> Html [60.2%]
 │
 ╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
@@ -4205,6 +4198,7 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │⭔ ${prefix}couple
 │⭔ ${prefix}anime
 │⭔ ${prefix}waifu
+│⭔ ${prefix}sound
 │
 ╰────❍
 ╭──❍ *Text Pro Menu*
@@ -4426,7 +4420,7 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │
 ╰────❍
 _Link Grup_\n_https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T_`
-                let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT' }, type: 1 },{ buttonId: 'jb', buttonText: { displayText: 'SHOP MENU' }, type: 1 }]
+                let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT' }, type: 1 },{ buttonId: 'help', buttonText: { displayText: 'SIMPEL MENU' }, type: 1 }]
             naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
             }
             break
