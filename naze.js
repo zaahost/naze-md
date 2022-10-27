@@ -977,11 +977,12 @@ break
            
 //PEMBATAS ADMIN & OWNER=======================================
             case 'totalfitur': case 'totalfiture': case 'fiture': case 'fitur': {
-            	m.reply('*Total Ada 231 Fitur*\n_Ketik Req Untuk Request Fitur_')
+            	m.reply('*Total Ada 230+ Fitur*\n_Ketik Req Untuk Request Fitur_')
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*_\n\n*PLAYMATE*\n- *Dana Ovo Qris*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot*\n*Silahkan Chat Owner*_\n\n- *PAYMATE*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
+                let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'OWNER👑' }, type: 1 }]
             }
             break
             case 'sc': {
@@ -1058,7 +1059,7 @@ break
             let me = m.sender
             let jawab = `*@${me.split('@')[0]}*`
             let ments = [me]
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             naze.sendMessage(m.chat, {react: {text: kloadq,key: m.key}})
             await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: ments, quoted: fkontak})
             }
@@ -1523,7 +1524,7 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.len
 for (let i of anu) {
 await sleep(1500)
 let txt = `「 Broadcast Bot 」\n\n${text}`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'OWNER👑' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(i, buttons, txt, nyoutube, m, {quoted: fkontak})
 }
 m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
@@ -1537,7 +1538,7 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 
 		for (let yoi of anu) {
 		await sleep(1500)
 		let txt = `「 Broadcast Bot 」\n\n${text}`
-		let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+		let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'OWNER👑' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             await naze.sendButtonText(yoi, buttons, txt, nyoutube, m, {quoted: fkontak})
 		}
 		m.reply('Sukses Broadcast')
@@ -1554,7 +1555,7 @@ let unread = i.receiptTimestamp
 let waktu = read ? read : unread
 teks += `⌕ @${i.userJid.split('@')[0]}\n`
 teks += ` ┗━⌕ *Waktu :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⌕ *Status :* ${read ? 'Dibaca' : 'Terkirim'}\n\n`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'OWNER👑' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i.userJid], quoted: fkontak})
 }}
 break
@@ -1575,7 +1576,7 @@ break
                  for (let i of anu) {
                      let nama = store.messages[i].array[0].pushName
                      teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n\n───────────────\n\n`
-                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                 let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'OWNER👑' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i], quoted: fkontak})
 }}
              break
@@ -1586,7 +1587,7 @@ await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i], qu
                  for (let i of anu) {
                      let metadata = await naze.groupMetadata(i)
                      teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n─────────────────\n\n`
-                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                 let buttons = [{ buttonId: 'owner', buttonText: { displayText: 'OWNER👑' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [metadata.owner], quoted: fkontak})
 }}
              break
@@ -3589,7 +3590,7 @@ rules = `╭──❍ *Rules BOT*
 │ *No Tlpn/vc❗*
 │
 ╰────❍`
-let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '👑Sewa' }, type: 1 }]
+let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: '👑OWNER' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
             }
             
@@ -3742,7 +3743,7 @@ goup = `╭──❍ *Group Menu*
 │⭔ ${prefix}hapusvote
 │
 ╰─────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'owner', buttonText: { displayText: 'OWNER👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, goup, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3759,7 +3760,7 @@ wbzone = `╭──❍ *Webzone Menu*
 │⭔ ${prefix}drakor
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, wbzone, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3783,7 +3784,7 @@ dwnloader = `╭──❍ *Downloader Menu*
 │⭔ ${prefix}soundcloud [url]
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, dwnloader, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3802,7 +3803,7 @@ sarch = `╭──❍ *Search Menu*
 │⭔ ${prefix}stalk [option] [query]
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, sarch, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3822,7 +3823,7 @@ rndom = `╭──❍ *Random Menu*
 │⭔ ${prefix}waifu
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, rndom, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3862,7 +3863,7 @@ txtpro = `╭──❍ *Text Pro Menu*
 │⭔ ${prefix}gluetext
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, txtpro, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3883,7 +3884,7 @@ potooxy = `╭──❍ *Photo Oxy Menu*
 │⭔ ${prefix}retrolol
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, potooxy, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3901,7 +3902,7 @@ ehoto = `╭──❍ *Ephoto Menu*
 │⭔ ${prefix}ytcertificate
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, ehoto, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3928,7 +3929,7 @@ mun = `╭──❍ *Fun Menu*
 │⭔ ${prefix}suitpvp [@tag]
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, mun, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3966,7 +3967,7 @@ pimbon = `╭──❍ *Primbon Menu*
 │⭔ ${prefix}zodiak
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, pimbon, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -3993,7 +3994,7 @@ cnvert = `╭──❍ *Convert Menu*
 │⭔ ${prefix}smeme
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, cnvert, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -4016,7 +4017,7 @@ min = `╭──❍ *Main Menu*
 │⭔ ${prefix}linkpoi [link]
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, min, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -4033,7 +4034,7 @@ dtbase = `╭──❍ *Database Menu*
 │⭔ ${prefix}delmsg
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, dtbase, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -4046,7 +4047,7 @@ aonymous = `╭──❍ *Anonymous Menu*
 │⭔ ${prefix}keluar
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, aonymous, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -4060,7 +4061,7 @@ islmic = `╭──❍ *Islamic Menu*
 │⭔ ${prefix}tafsirsurah
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, islmic, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -4080,7 +4081,7 @@ vice = `╭──❍ *Voice Changer*
 │⭔ ${prefix}tupai
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA👑' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, vice, nyoutube, m, {quoted: fkontak})
             }
 
