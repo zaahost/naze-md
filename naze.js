@@ -48,7 +48,7 @@ const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('SITE : https://jahofc27.akunepep18.repl.co\nGRUP :\nhttps://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T')  //ubah di config biar ngk emror
+const nyoutube = ('© JahOfc\nGRUP :\nhttps://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 gambar = fs.readFileSync('./media/image/naze.jpg')
@@ -75,7 +75,6 @@ var ucapanWaktu = 'Selamat Pagi 🌉'
  } 
  
 // read database
-let welkom = JSON.parse(fs.readFileSync('./database/group/welcome.json'))
 let tebaklagu = db.data.game.tebaklagu = []
 let _family100 = db.data.game.family100 = []
 let kuismath = db.data.game.math = []
@@ -106,7 +105,6 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
         const qmsg = (quoted.msg || quoted)
         const isMedia = /image|video|sticker|audio/.test(mime)
         const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.participant) : mek.key.remoteJid
-        const isWelkom = isGroup ? welkom.includes(from) : false
 	    
         // Group
         const groupMetadata = m.isGroup ? await naze.groupMetadata(m.chat).catch(e => {}) : ''
@@ -252,7 +250,7 @@ const sendStickerFromUrl = async(to, url) => {
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":`${ytname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${ytname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": { "title": `${ytname}`,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': `${ytname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;ytname,;;;\nFN:ytname\nitem1.TEL;waid=6283857687084:62883857687084\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
+		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': `${ytname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;ytname,;;;\nFN:ytname\nitem1.TEL;waid=6285875158363:6285875158363\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
 	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": `${ytname}`,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 		
 
@@ -979,13 +977,11 @@ break
            
 //PEMBATAS ADMIN & OWNER=======================================
             case 'totalfitur': case 'totalfiture': case 'fiture': case 'fitur': {
-            	m.reply('*Total Ada 230+ Fitur*\n_Ketik Req Untuk Request Fitur_')
+            	m.reply('*Total Ada 231 Fitur*\n_Ketik Req Untuk Request Fitur_')
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot*\n*Silahkan Chat Owner*_\n\n- *DANA : 083857687084 OVO : 083107322844*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
-                let buttons = [{buttonId: `menu`, buttonText: {displayText: '📚MENU'}, type: 1},{buttonId: `owner`, buttonText: {displayText: '✅OWNER'}, type: 1}]
-                await naze.sendButtonText(m.chat, buttons, tesk, nyoutube, m, {quoted: fkontak})
+                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*_\n\n*PLAYMATE*\n- *Dana Ovo Qris*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
             }
             break
             case 'sc': {
@@ -3568,23 +3564,6 @@ let capt = `⭔ Title: ${judul}
                     m.reply(mess.errapi)
                 })
                 }
-            break
-            case 'welcome':
-               if (!isGroupAdmins) return reply(mess.only.admin)
-               if (!isGroup) return reply(mess.only.group)
-               if (args.length < 1) return reply('!welcome enable/disable')
-               if ((args[0]) === 'enable') {
-               if (isWelkom) return reply('Udah aktif')
-               welkom.push(from)
-               fs.writeFileSync('./database/group/welcome.json', JSON.stringify(welkom))
-               reply('Sukses mengaktifkan fitur welcome di group ini ✔️')
-               } else if ((args[0]) === 'disable') {
-               welkom.splice(from, 1)
-               fs.writeFileSync('./database/group/welcome.json', JSON.stringify(welkom))
-               reply('Sukses menonaktifkan fitur welcome di group ini ✔️')
-               } else {
-               reply('Enable untuk mengaktifkan, disable untuk menonaktifkan')
-}
             break
             case 'drakor': {
             if (!text) throw `Example : ${prefix + command} love`

@@ -140,6 +140,32 @@ async function startNaze() {
                 } catch {
                     ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
+
+                // Get Profile Picture Group
+                try {
+                    ppgroup = await naze.profilePictureUrl(anu.id, 'image')
+                } catch {
+                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                }
+                
+                let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                let nyoutube = ('© Xyrox\nYoutube :\nhttps://youtube.com/c/Xyrox27')
+                let jumhal = '100000000000000'
+                if (anu.action == 'add') {
+                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Selamat Datang *Syng :v* Di Grup ${metadata.subject}`, buttons: buttons, footer: nyoutube})
+                } else if (anu.action == 'remove') {
+                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Keluar Dari ${metadata.subject}`, buttons: buttons, footer: nyoutube})
+                } else if (anu.action == 'promote') {
+                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, mentions: [num], caption: `@${num.split('@')[0]} Promote From ${metadata.subject}`, buttons: buttons, footer: nyoutube})
+                } else if (anu.action == 'demote') {
+                    naze.sendMessage(anu.id, { image: { url: ppuser },fileLength: jumhal,  mentions: [num], caption: `@${num.split('@')[0]} Demote From ${metadata.subject}`, buttons: buttons, footer: nyoutube})
+              }
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+	
     // Setting
     naze.decodeJid = (jid) => {
         if (!jid) return jid
@@ -179,7 +205,7 @@ async function startNaze() {
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await naze.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await naze.getName(i + '@s.whatsapp.net')}\nFN:${await naze.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:jahofc27@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://jahofc27.akunepep18.repl.co\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await naze.getName(i + '@s.whatsapp.net')}\nFN:${await naze.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:nazedev@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/naze.dev\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 	naze.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
