@@ -3637,7 +3637,6 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Prefix* :「 MULTI-PREFIX 」
 ├ *Total Hit* : ${jumlahcmd}
 ├ *Total Hit Today* : ${jumlahharian}
-├ *Bot Telah Online Selama* :\n*${runtime(process.uptime())}*`
 ╰──❍
 
 ╭──❍「 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼 」❍
