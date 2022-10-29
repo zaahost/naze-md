@@ -136,29 +136,6 @@ async function startNaze() {
             for (let num of participants) {
                 
                 let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'MENU' }, type: 1 }]
-                let buttonMessage = {
-  document: fs.readFileSync('./media/doc/fake.pptx'),
-  fileName : akulaku + (` | Halo ${pushname}`),
-  mimetype: `${filsk}`,
-  fileLength: jumhal,
-  pageCount: jumlha,
-  caption: jawab,
-  footer: nyoutube,
-  buttons: buttons,
-  mentions: ments,
-  headerType: 4,
-  contextInfo:{externalAdReply:{
-  title: 'Xyrox27',
-  body: 'Subscribe My YouTube', 
-  showAdAttribution: true,
-  thumbnail: thumb,
-  mediaType: 2,
-  mediaUrl: myytv,
-  sourceUrl: myyt
-  }}
-  }
-  naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
-  }
                 let nyoutube = ('© Xyrox\nSite :\nhttps://jahofc27.akunepep18.repl.co/')
                 let jumhal = '100000000000000'
                 if (anu.action == 'add') {
