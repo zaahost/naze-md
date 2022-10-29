@@ -145,37 +145,14 @@ async function startNaze() {
                 try {
                     ppgroup = await naze.profilePictureUrl(anu.id, 'image')
                 } catch {
-                    ppgroup = './media/image/logo1.jpg'
+                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
                 
                 let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'MENU' }, type: 1 }]
-                let buttonMessage = {
-  document: fs.readFileSync('./media/doc/fake.pptx'),
-  fileName : akulaku + (` | Halo ${pushname}`),
-  mimetype: `${filsk}`,
-  fileLength: jumhal,
-  pageCount: jumlha,
-  caption: jawab,
-  footer: nyoutube,
-  buttons: buttons,
-  mentions: ments,
-  headerType: 4,
-  contextInfo:{externalAdReply:{
-  title: 'Xyrox27',
-  body: 'Subscribe My YouTube', 
-  showAdAttribution: true,
-  thumbnail: thumb,
-  mediaType: 2,
-  mediaUrl: myytv,
-  sourceUrl: myyt
-  }}
-  }
-  naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
-  }
                 let nyoutube = ('© Xyrox\nSite :\nhttps://jahofc27.akunepep18.repl.co/')
                 let jumhal = '100000000000000'
                 if (anu.action == 'add') {
-                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: ` Selamat Datang `@${num.split("@")[0]} Di Grup ${metadata.subject}`, buttons: buttons, footer: nyoutube})
+                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Selamat Datang *Syng :v* Di Grup ${metadata.subject}`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'remove') {
                     naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Keluar Dari ${metadata.subject}`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'promote') {
