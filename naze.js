@@ -1913,7 +1913,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 naze.sendContact(m.chat, global.owner, m)
             }
             break
-            /**case 'setmenu': {
+            case 'setmenu': {
             if (!isCreator) throw mess.owner
             let setbot = db.data.settings[botNumber]
                if (args[0] === 'templateImage'){
@@ -1955,7 +1955,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 naze.sendListMsg(m.chat, `pilih aja *${pushname}* Setmenu nya!`, nyoutube, `*Hello Kak* !`, `Pilih Set Menu`, sections, m)
                 }
             }
-            break**/
+            break
             
 //PEMBATAS CONVERT=======================================
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
@@ -3637,6 +3637,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Prefix* :「 MULTI-PREFIX 」
 ├ *Total Hit* : ${jumlahcmd}
 ├ *Total Hit Today* : ${jumlahharian}
+├ *online selama* : ${runtime(process.uptime())}
 ╰──❍
 
 ╭──❍「 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼 」❍
@@ -4393,29 +4394,8 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 ╰────❍
 _Link Grup_\n_https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T_`
                 let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT' }, type: 1 },{ buttonId: 'help', buttonText: { displayText: 'SIMPEL MENU' }, type: 1 }]
-                let buttonMessage = {
-  document: fs.readFileSync('./media/doc/fake.pptx'),
-  fileName : akulaku + (` | Halo ${pushname}`),
-  mimetype: `${filsk}`,
-  fileLength: jumhal,
-  pageCount: jumlha,
-  caption: jawab,
-  footer: nyoutube,
-  buttons: buttons,
-  mentions: ments,
-  headerType: 4,
-  contextInfo:{externalAdReply:{
-  title: 'Xyrox27',
-  body: 'Subscribe My YouTube', 
-  showAdAttribution: true,
-  thumbnail: thumb,
-  mediaType: 2,
-  mediaUrl: myytv,
-  sourceUrl: myyt
-  }}
-  }
-  naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
-  }
+            naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
+            }
             break
 case 'sound1':
 case 'sound2':
