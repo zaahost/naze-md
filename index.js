@@ -152,7 +152,7 @@ async function startNaze() {
                 let nyoutube = ('© JahOfc')
                 let jumhal = '100000000000000'
                 if (anu.action == 'add') {
-                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `Slamat Datang @${num.split("@")[0]} Di ${metadata.subject} @${num.split("@")[0]}`, buttons: buttons, footer: nyoutube})
+                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `Slamat Datang @${num.split("@")[0]} Di ${metadata.subject}`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'remove') {
                     naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `Selamat Tinggal @${num.split("@")[0]} Dari ${metadata.subject}`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'promote') {

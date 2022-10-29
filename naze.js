@@ -1741,7 +1741,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     await naze.sendButtonText(m.chat, buttons, `\`\`\`Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner \`\`\``)
                     throw false
                 }
-                m.reply('Ok')
+                m.reply('Oke👌')
                 let other = room.other(m.sender)
                 if (other) await naze.sendText(other, `\`\`\`Partner Telah Meninggalkan Sesi Anonymous\`\`\``, m)
                 delete this.anonymous[room.id]
@@ -1826,11 +1826,6 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                             return who === this.a ? this.b : who === this.b ? this.a : ''
                         },
                     }
-                    let buttons = [
-                        { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
-                    ]
-                    await naze.sendButtonText(m.chat, buttons, `\`\`\`Mohon Tunggu Sedang Mencari Partner\`\`\``, naze.user.name, m)
-                }
                 break
             }
             case 'public': {
@@ -3637,6 +3632,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Prefix* :「 MULTI-PREFIX 」
 ├ *Total Hit* : ${jumlahcmd}
 ├ *Total Hit Today* : ${jumlahharian}
+├ *Bot Telah Online Selama* :\n*${runtime(process.uptime())}*`
 ╰──❍
 
 ╭──❍「 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼 」❍
@@ -4045,7 +4041,7 @@ aonymous = `╭──❍ *Anonymous Menu*
 │⭔ ${prefix}keluar
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA BOT' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, aonymous, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -4393,8 +4389,29 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 ╰────❍
 _Link Grup_\n_https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T_`
                 let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT' }, type: 1 },{ buttonId: 'help', buttonText: { displayText: 'SIMPEL MENU' }, type: 1 }]
-            naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
-            }
+                let buttonMessage = {
+  document: fs.readFileSync('./media/doc/fake.pptx'),
+  fileName : akulaku + (` | Halo ${pushname}`),
+  mimetype: `${filsk}`,
+  fileLength: jumhal,
+  pageCount: jumlha,
+  caption: jawab,
+  footer: nyoutube,
+  buttons: buttons,
+  mentions: ments,
+  headerType: 4,
+  contextInfo:{externalAdReply:{
+  title: 'Xyrox27',
+  body: 'Subscribe My YouTube', 
+  showAdAttribution: true,
+  thumbnail: thumb,
+  mediaType: 2,
+  mediaUrl: myytv,
+  sourceUrl: myyt
+  }}
+  }
+  naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
+  }
             break
 case 'sound1':
 case 'sound2':
