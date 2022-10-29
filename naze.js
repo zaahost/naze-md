@@ -981,9 +981,9 @@ break
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot*\n*Silahkan Chat Owner*_\n\n- *DANA : 083857687084 OVO : 083107322844*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
-                let buttons = [{buttonId: `menu`, buttonText: {displayText: '📚MENU'}, type: 1},{buttonId: `owner`, buttonText: {displayText: '✅OWNER'}, type: 1}]
-                await naze.sendButtonText(m.chat, buttons, tesk, nyoutube, m, {quoted: fkontak})
+                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot*\n*Silahkan Hubungi Owner*_\n\n*PLAYMATE*\n- *Dana : 083857687084 Ovo : 083107322844*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
+                let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑SEWA' }, type: 1 }]
+                await naze.sendButtonText(m.chat, buttons, lowq, nyoutube, m, {quoted: fkontak})
             }
             break
             case 'sc': {
