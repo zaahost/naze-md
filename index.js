@@ -148,15 +148,15 @@ async function startNaze() {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
                 
-                let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'MENU' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
-                let nyoutube = ('© Xyrox\nYoutube :\nhttps://jahofc27.akunepep18.repl.co/')
+                let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'MENU' }, type: 1 }]
+                let nyoutube = ('© Xyrox\nSite :\nhttps://jahofc27.akunepep18.repl.co/')
                 let jumhal = '100000000000000'
                 if (anu.action == 'add') {
                     naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Selamat Datang *Syng :v* Di Grup ${metadata.subject}`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'remove') {
                     naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Keluar Dari ${metadata.subject}`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'promote') {
-                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, mentions: [num], caption: `@${num.split('@')[0]} Promote From ${metadata.subject}`, buttons: buttons, footer: nyoutube})
+                    naze.sendMessage(anu.id, { image: { url: ppuser }, fileLength: jumhal, mentions: [num], caption: `@${num.split('@')[0]} Telah Menjadi Admin Di ${metadata.subject}`, buttons: buttons, footer: nyoutube})
                 } else if (anu.action == 'demote') {
                     naze.sendMessage(anu.id, { image: { url: ppuser },fileLength: jumhal,  mentions: [num], caption: `@${num.split('@')[0]} Demote From ${metadata.subject}`, buttons: buttons, footer: nyoutube})
               }

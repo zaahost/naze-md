@@ -981,9 +981,7 @@ break
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot*\n*Silahkan Hubungi Owner*_\n\n*PLAYMATE*\n- *Dana : 083857687084 Ovo : 083107322844*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
-                let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑SEWA' }, type: 1 }]
-                await naze.sendButtonText(m.chat, buttons, lowq, nyoutube, m, {quoted: fkontak})
+                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/qr.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot*\n*Silahkan Hubungi Owner*_\n\n*Ovo: 083107322844*\n- *Dana : 083857687084*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
             }
             break
             case 'sc': {
@@ -992,7 +990,7 @@ break
             break		 
             case 'subsyt': {
             let jawab = `*${ucapanWaktu}*\n*INI NAMA YT KU : Xyrox27*`
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA BOT' }, type: 1 }]
+            let buttons = [{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA BOT' }, type: 1 }]
             let buttonMessage = {
   document: fs.readFileSync('./media/doc/fake.pptx'),
   fileName : akulaku + (` | Halo ${pushname}`),
@@ -1060,7 +1058,7 @@ break
             let me = m.sender
             let jawab = `*@${me.split('@')[0]}*`
             let ments = [me]
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+            let buttons = [{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             naze.sendMessage(m.chat, {react: {text: kloadq,key: m.key}})
             await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: ments, quoted: fkontak})
             }
@@ -1144,7 +1142,7 @@ break
 	}
 	break
 	case 'addprem': {
-       m.reply(`*_Error!_*\n*Fitur Addprem & Delprem Akan Owner Buka Next Update*\n_Minggu Depan :v_`)
+       m.reply(`*_Error!_*\n*Fitur Addprem & Delprem belum siap*\n_Minggu Depan Siap`)
 		}
 		break
 	    case 'setname': case 'setsubject': {
@@ -1186,7 +1184,6 @@ break
                 break
             case 'tagall': {
                 if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 let teks = `══✪〘 *👥 Tag All* 〙✪══
  
@@ -1199,7 +1196,6 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 break
                 case 'hidetag': {
             if (!m.isGroup) throw mess.group
-            if (!isBotAdmins) throw mess.botAdmin
             if (!isAdmins) throw mess.admin
             naze.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
@@ -1219,6 +1215,7 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
 	    break
                case 'vote': {
             if (!m.isGroup) throw mess.group
+            if (!isAdmins) throw mess.admin
             if (m.chat in vote) throw `_Masih ada vote di chat ini!_\n\n*${prefix}hapusvote* - untuk menghapus vote`
             if (!text) throw `Masukkan Alasan Melakukan Vote, Example: *${prefix + command} Owner Ganteng*`
             m.reply(`Vote dimulai!\n\n*${prefix}upvote* - untuk ya\n*${prefix}devote* - untuk tidak\n*${prefix}cekvote* - untuk mengecek vote\n*${prefix}hapusvote* - untuk menghapus vote`)
@@ -1261,6 +1258,7 @@ let buttonsVote = [
             break
                case 'upvote': {
             if (!m.isGroup) throw mess.group
+            if (!isAdmins) throw mess.admin
             if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
@@ -1525,7 +1523,7 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.len
 for (let i of anu) {
 await sleep(1500)
 let txt = `「 Broadcast Bot 」\n\n${text}`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
 await naze.sendButtonText(i, buttons, txt, nyoutube, m, {quoted: fkontak})
 }
 m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
@@ -1539,7 +1537,7 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 
 		for (let yoi of anu) {
 		await sleep(1500)
 		let txt = `「 Broadcast Bot 」\n\n${text}`
-		let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+		let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
             await naze.sendButtonText(yoi, buttons, txt, nyoutube, m, {quoted: fkontak})
 		}
 		m.reply('Sukses Broadcast')
@@ -1556,7 +1554,7 @@ let unread = i.receiptTimestamp
 let waktu = read ? read : unread
 teks += `⌕ @${i.userJid.split('@')[0]}\n`
 teks += ` ┗━⌕ *Waktu :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⌕ *Status :* ${read ? 'Dibaca' : 'Terkirim'}\n\n`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i.userJid], quoted: fkontak})
 }}
 break
@@ -1577,7 +1575,7 @@ break
                  for (let i of anu) {
                      let nama = store.messages[i].array[0].pushName
                      teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n\n───────────────\n\n`
-                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i], quoted: fkontak})
 }}
              break
@@ -1588,7 +1586,7 @@ await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i], qu
                  for (let i of anu) {
                      let metadata = await naze.groupMetadata(i)
                      teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n─────────────────\n\n`
-                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
+                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [metadata.owner], quoted: fkontak})
 }}
              break
@@ -3705,7 +3703,6 @@ let alfamart = `628111500959@s.whatsapp.net`
                 {title: "✦  「 Anonymous 」", rowId: `manonymous`, description: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
                 {title: "✦  「 Islamic 」", rowId: `mislamic`, description: `╰ ► 🕌Masyaallah Brother`},
                 {title: "✦  「 Voice 」", rowId: `mvoice`, description: `╰ ► 🎶Req Lagu Apa Ngab?`},
-                {title: "✦  「 BioData 」", rowId: `mowner`, description: `╰ ► Jangan Kepoo!! 😡`}
                 ]
                 },{
 	           title: ' ∫ » SUPPORT ME –––––––·•',
