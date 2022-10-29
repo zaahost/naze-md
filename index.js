@@ -134,19 +134,6 @@ async function startNaze() {
             let metadata = await naze.groupMetadata(anu.id)
             let participants = anu.participants
             for (let num of participants) {
-                // Get Profile Picture User
-                try {
-                    ppuser = await naze.profilePictureUrl(num, 'image')
-                } catch {
-                    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-                }
-
-                // Get Profile Picture Group
-                try {
-                    ppgroup = await naze.profilePictureUrl(anu.id, 'image')
-                } catch {
-                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg
-                }
                 
                 let buttons = [{ buttonId: 'menu', buttonText: { displayText: 'MENU' }, type: 1 }]
                 let buttonMessage = {
