@@ -31,8 +31,8 @@ global.APIKeys = {
 }
 
 // Other
-global.owner = ['6283857687084,6283107322844']
-global.ownernomer = "6283857687084,6283107322844"
+global.owner = ['6283857687084']
+global.ownernomer = "6283857687084"
 global.premium = ['6283857687084,6283107325844']
 global.packname = 'Sticker By XyroxYT'
 global.author = 'JahOfc'
@@ -57,12 +57,12 @@ global.mess = {
     endLimit: 'Limit Harian Anda Telah Habis, Limit Akan Direset Setiap Jam 12',
 }
 global.limitawal = {
-    premium: "tidak terbatas",
-    free: 20
+    premium: "Infinity",
+    free: 25
 }
 global.thumb = fs.readFileSync('./media/image/naze.jpg')
 global.faall = fs.readFileSync('./media/image/fake.jpg')
-global.mygit = 'https://github.com/zaahost'
+global.mygit = 'https://github.com/nazedev'
 global.myyt = 'https://youtube.com/channel/UCrFUDpiEgIxEljiqki22-yg'
 global.myytv = 'https://youtube.com/channel/UCrFUDpiEgIxEljiqki22-yg'
 global.mygc = "https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T"
