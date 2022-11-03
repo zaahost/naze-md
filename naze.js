@@ -2,7 +2,7 @@
 
 Yg Mau Sv Nomerku?
 
-wa.me/623857687084
+wa.me/6285875158363
 
 Minimal Kasih Cr kalo mau reupload😡
 
@@ -11,10 +11,9 @@ Yg Reupload Tanpa Kasih Cr
 Sc Akan Saya Encode
 
 Base : Hisoka
-Recode : Naze & ( Xyrox )
+Recode : Naze & ( Nama Lu )
 
 **/
-
 require('./config')
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
@@ -32,6 +31,7 @@ const naztod = require("tod-api")
 const request = require('request');
 const textpro = require('./lib/textpro')
 const bochil = require('@bochilteam/scraper')
+const { mediafireDl } = require('./lib/mediafire.js')
 const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
 const { exec, spawn, execSync } = require("child_process")
@@ -48,9 +48,10 @@ const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('SITE : https://jahofc27.akunepep18.repl.co\nGRUP :\nhttps://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T')  //ubah di config biar ngk emror
+const nyoutube = ('© Xyrox\nGrup Me :\nhttps://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
+global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/naze.jpg')
 
 //TIME
@@ -95,6 +96,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
         const isCmd = body.startsWith(prefix)
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
+        const arg = body.substring(body.indexOf(" ") + 1);
         const pushname = m.pushName || "No Name"
         const botNumber = await naze.decodeJid(naze.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
@@ -105,7 +107,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
         const qmsg = (quoted.msg || quoted)
         const isMedia = /image|video|sticker|audio/.test(mime)
         const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.participant) : mek.key.remoteJid
-
+	    
         // Group
         const groupMetadata = m.isGroup ? await naze.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -113,7 +115,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
         const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
     	const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
     	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-        const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
+        const isPremium = isCreator || isCreator || prem.checkPremiumUser(m.sender, premium);
         const sotoy = [
 		'🍊 : 🍒 : 🍐',
 		'🍒 : 🔔 : 🍊',
@@ -208,6 +210,9 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
           }})
         }
                 
+//Premium Exp
+prem.expiredCheck(naze, m, premium);
+                
 //sticker url
 const sendStickerFromUrl = async(to, url) => {
                 var names = Date.now() / 10000;
@@ -240,7 +245,7 @@ const sendStickerFromUrl = async(to, url) => {
              }
              
              //Fake
-	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${ytname}`, orderTitle: 'Naze', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${ytname}`, orderTitle: 'JahOFC', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
 		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: `${ytname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":359996400,"ptt": "true"}} } 
 		const ftextt = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})}, message: { "extendedTextMessage": {"text":`${ytname}`, "title": `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
@@ -250,7 +255,7 @@ const sendStickerFromUrl = async(to, url) => {
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":`${ytname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${ytname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": { "title": `${ytname}`,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': `${ytname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;ytname,;;;\nFN:ytname\nitem1.TEL;waid=6283857687084:62883857687084\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
+		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': `${ytname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;ytname,;;;\nFN:ytname\nitem1.TEL;waid=6283857687084:6283857687084\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
 	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": `${ytname}`,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 		
 
@@ -287,8 +292,8 @@ jumlahharian = `${dataa.value}`
 	  // Anti Link
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(`「 *ANTI LINK* 」\n\n*Kamu terdeteksi mengirim link group*, *maaf kamu akan di kick‼️*`)
-        if (!isBotAdmins) return m.reply(`*Bot aja bukan admin ngab*`)
+        m.reply(`「 *ANTI LINK* 」\n\n*Kamu terdeteksi mengirim link group*, *maaf kamu akan di kick‼️,yang mau juga silahkan kirim link‼️*`)
+        if (!isBotAdmins) return m.reply(`*Bot aja bukan admin anj*`)
         let gclink = (`https://chat.whatsapp.com/`+await naze.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
         let isgclink = isLinkThisGc.test(m.text)
@@ -298,6 +303,9 @@ jumlahharian = `${dataa.value}`
         naze.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
         }
+        
+      // Naze Dev
+      const deploy = (teks) => { naze.relayMessage(m.chat, { requestPaymentMessage: { Message: { extendedTextMessage: { text: teks, currencyCodeIso4217: 'IDR', requestFrom: '0@s.whatsapp.net', expiryTimestamp: 8000, amount: 1, background: thumb }}}}, {})}
         
       // Mute Chat
       if (db.data.chats[m.chat].mute && !isAdmins && !isCreator) {
@@ -828,13 +836,38 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
                 }
             }
             break
+            case 'vrtx': {
+            	deploy('hehe')
+            	}
+            break
+            case 'poll': {
+if (!isCreator) return mess.owner
+if (!text) throw `Example : ${prefix + command} Owner Ganteng|Iya|Tidak`
+let poll1 = `${text.split("|")[1]}`
+let poll2 = `${text.split("|")[2]}`
+var pollCreation = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+"pollCreationMessage": {
+"name": `${text.split("|")[0]}`,
+"options": [
+	{
+"optionName": poll1
+	},
+	{
+"optionName": poll2
+	}
+],
+"selectableOptionsCount": 2
+	}
+}), { userJid: m.chat})
+naze.relayMessage(m.chat, pollCreation.message, { messageId: pollCreation.key.id})
+}
+break
             
 //Pembatas FUN===============================================
             case 'slot': {
             const somtoy = sotoy[Math.floor(Math.random() * sotoy.length)]
             let sloth =`[  🎰VIRTUAL SLOT 🎰  ]\n------------------------\n\n🍒 : 🍌 : 🍇\n${somtoy}<=====\n🍇 : 🍌 : 🍒\n\n------------------------\n[  🎰 VIRTUAL SLOT 🎰  ]\n\n*Keterangan* :\n_Jika Mendapatkan 3Buah Sama_\n_Berarti Kamu Win_\n\n_Contoh : 🍒 : 🍒 : 🍒_ <=====`
-            let buttons = [{ buttonId: 'slot', buttonText: { displayText: '🎰MAIN LAGI🎰' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, sloth, nyoutube, m)
+            naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
             }
             break
             case 'jodohku': {
@@ -880,8 +913,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             	let bisa = ['Bisa','Coba Saja','Pasti Bisa','Mungkin Saja','Tidak Bisa','Tidak Mungkin','Coba Ulangi','Ngimpi kah?','yakin bisa?']
                 let keh = bisa[Math.floor(Math.random() * bisa.length)]
                 let jawab = `*Bisakah ${text}*\nJawab : ${keh}`
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'SABAR🗿' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {quoted: ftoko})
+                naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
             }
             break
             case 'apakah': {
@@ -889,8 +921,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             	let apa = ['Iya','Tidak','Bisa Jadi','Coba Ulangi','Mungkin Saja','Coba Tanyakan Ayam']
                 let kah = apa[Math.floor(Math.random() * apa.length)]
                 let jawab = `*Apakah ${text}*\nJawab : ${kah}`
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'HAHAHA' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {quoted: ftoko})
+                naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
             }
             break
             case 'kapan': case 'kapankah': {
@@ -898,8 +929,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             	let kapan = ['Besok','Lusa','Nanti','4 Hari Lagi','5 Hari Lagi','6 Hari Lagi','1 Minggu Lagi','2 Minggu Lagi','3 Minggu Lagi','1 Bulan Lagi','2 Bulan Lagi','3 Bulan Lagi','4 Bulan Lagi','5 Bulan Lagi','6 Bulan Lagi','1 Tahun Lagi','2 Tahun Lagi','3 Tahun Lagi','4 Tahun Lagi','5 Tahun Lagi','6 Tahun Lagi','1 Abad lagi','3 Hari Lagi','Bulan Depan','Nanti','Tidak Akan Pernah']
                 let koh = kapan[Math.floor(Math.random() * kapan.length)]
                 let jawab = `*${command} ${text}*\nJawab : ${koh}`
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'SABAR🗿' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {quoted: ftoko})
+                naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
             }
             break
             case 'cekmati': {
@@ -908,24 +938,21 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
                 if (!q) return m.reply(`Invalid!\n\nYg mau di cek siapa anjir?`)
                 predea = await axios.get(`https://api.agify.io/?name=${q}`)
                 let jawab = (`Nama : ${predea.data.name}\n*Mati Pada Umur :* ${predea.data.age} Tahun.\n\n_Cepet Cepet Tobat Bro_\n_Soalnya Mati ga ada yang tau_`)
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'SABAR🗿' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: [m.sender], quoted: fkontak})
+                naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
             }
             break
             case 'mylove': case 'love': case 'cintaku': case 'cinta': {
             	let mlove = ['⟪1%⟫','⟪2%⟫','⟪3%⟫','⟪4%⟫','⟪5%⟫','⟪6%⟫','⟪7%⟫','⟪8%⟫','⟪9%⟫','⟪10%⟫','⟪11%⟫','⟪12%⟫','⟪13%⟫','⟪14%⟫','⟪15%⟫','⟪16%⟫','⟪17%⟫','⟪18%⟫','⟪19%⟫','⟪20%⟫','⟪21%⟫','⟪22%⟫','⟪23%⟫','⟪24%⟫','⟪25%⟫','⟪26%⟫','⟪27%⟫','⟪28%⟫','⟪29%⟫','⟪30%⟫','⟪31%⟫','⟪32%⟫','⟪33%⟫','⟪34%⟫','⟪35%⟫','⟪36%⟫','⟪37%⟫','⟪38%⟫','⟪39%⟫','⟪40%⟫','⟪41%⟫','⟪42%⟫','⟪43%⟫','⟪44%⟫','⟪45%⟫','⟪46%⟫','⟪47%⟫','⟪48%⟫','⟪49%⟫','⟪50%⟫','⟪51%⟫','⟪52%⟫','⟪53%⟫','⟪54%⟫','⟪55%⟫','⟪56%⟫','⟪57%⟫','⟪58%⟫','⟪59%⟫','⟪60%⟫','⟪61%⟫','⟪62%⟫','⟪63%⟫','⟪64%⟫','⟪65%⟫','⟪66%⟫','⟪67%⟫','⟪68%⟫','⟪69%⟫','⟪70%⟫','⟪71%⟫','⟪72%⟫','⟪73%⟫','⟪74%⟫','⟪75%⟫','⟪76%⟫','⟪77%⟫','⟪78%⟫','⟪79%⟫','⟪80%⟫','⟪81%⟫','⟪82%⟫','⟪83%⟫','⟪84%⟫','⟪85%⟫','⟪86%⟫','⟪87%⟫','⟪88%⟫','⟪89%⟫','⟪90%⟫','⟪91%⟫','⟪92%⟫','⟪93%⟫','⟪94%⟫','⟪95%⟫','⟪96%⟫','⟪97%⟫','⟪98%⟫','⟪99%⟫','⟪100%⟫']
                 let mcinta = mlove[Math.floor(Math.random() * mlove.length)]
                 let jawab = (`*Sebesar : ${mcinta} Padanya*`)
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: '❤' }, type: 1 }]
-               naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: [m.sender], quoted: fkontak})
+                naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
             	}
             break
             case 'daurulang': {
             	let mdaur = ['♳','♴','♵','♶','♷','♸','♹','♺']
                 let mulng = mdaur[Math.floor(Math.random() * mdaur.length)]
                 let jawab = (`*Telah Di Daur Ulang Sebanyak : ${mulng}*`)
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: '♻️' }, type: 1 }]
-               naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: [m.sender], quoted: fkontak})
+               naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
             	}
             break
             case 'dadu': {
@@ -959,8 +986,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
 				let krng = ['Mungkin suatu hari', 'Tidak juga', 'Tidak keduanya', 'Kurasa tidak', 'Ya', 'Tidak', 'Coba tanya lagi', 'Tidak ada']
 				let koh = krng[Math.floor(Math.random() * krng.length)]
                 let jawab = `*${command} ${text}*\n*Jawab : ${koh}*`
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'SABAR🗿' }, type: 1 }]
-                naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {quoted: floc})
+                naze.sendMessage(m.chat, { text: jawab }, {quoted: m})
 				}
 				break
 				case 'fitnah': {
@@ -977,20 +1003,20 @@ break
            
 //PEMBATAS ADMIN & OWNER=======================================
             case 'totalfitur': case 'totalfiture': case 'fiture': case 'fitur': {
-            	m.reply('*Total Ada 230+ Fitur*\n_Ketik Req Untuk Request Fitur_')
+            	m.reply('*Total Ada 300 Fitur*\n_Ketik Req Untuk Request Fitur_')
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/qr.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin sewa bot*\n*Silahkan Hubungi Owner*_\n\n*Ovo: 083107322844*\n- *Dana : 083857687084*\n Klik Link Berikut : https://wa.me/p/5631273446920627/6283107322844\n\n_Terima kasih_` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/qr.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin berdonasi silahkan scan gambar diatas*\n\n*Jika ingin sewa bot*\n*Silahkan Chat Owner*\n\n_Terima kasih_` }, { quoted: m })
             }
             break
             case 'sc': {
-                m.reply('CHT WA OWNER KAK : https://wa.me/6283857687084')
+                m.reply('Cht owner wa.me/6283857687084')
             }
             break		 
             case 'subsyt': {
-            let jawab = `*${ucapanWaktu}*\n*INI NAMA YT KU : Xyrox27*`
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA BOT' }, type: 1 }]
+            let jawab = `*${ucapanWaktu}*\n*Yt Name : Xyrox27*`
+            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             let buttonMessage = {
   document: fs.readFileSync('./media/doc/fake.pptx'),
   fileName : akulaku + (` | Halo ${pushname}`),
@@ -1007,7 +1033,7 @@ break
   showAdAttribution: true,
   thumbnail: thumb,
   mediaType:2,
-  mediaUrl: myyt,
+  mediaUrl: myytv,
   sourceUrl: myyt
   }}
   }
@@ -1024,8 +1050,8 @@ break
 			break
             case 'runtime': case 'tes': {
             	let lowq = `*Bot Telah Online Selama*\n*${runtime(process.uptime())}*`
-                let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑SEWA' }, type: 1 }]
-                await naze.sendButtonText(m.chat, buttons, lowq, nyoutube, m, {quoted: fkontak})
+                naze.sendMessage(m.chat, { text: lowq }, {quoted: fkontak})
+                naze.setStatus(`${naze.user.name} | Runtime : ${runtime(process.uptime())}`)
             	}
             break
             case 'req': case 'request': {
@@ -1055,10 +1081,11 @@ break
             }
             break
             case 'tagme': {
+            if (!m.isGroup) throw mess.group
             let me = m.sender
             let jawab = `*@${me.split('@')[0]}*`
             let ments = [me]
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             naze.sendMessage(m.chat, {react: {text: kloadq,key: m.key}})
             await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: ments, quoted: fkontak})
             }
@@ -1075,7 +1102,7 @@ break
             }
             break  
             case 'join': {
-                if (!isCreator) throw mess.owner
+                if (!isPremium) throw mess.premime
                 if (!text) throw 'Masukkan Link Group!'
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
                 m.reply(mess.wait)
@@ -1086,6 +1113,15 @@ break
             case 'leave': {
                 if (!isCreator) throw mess.owner
                 await naze.groupLeave(m.chat).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+            }
+            break
+            case 'setowner': {
+               if (!isCreator) throw mess.owner
+               if (m.text.includes('@')) return m.reply(`*Invalid!*\n\n*Pake Nomer Woy*\n*Jangan Pakai Tag!*`)
+               if (!text) throw `Example : ${prefix + command} 6285875158363`
+              global.owner = text
+              global.ownernomer = text
+              m.reply(`Owner berhasil diubah menjadi\n\n⭔ Owner : ${global.owner}\n⭔ OwnerNumber : ${global.ownernomer}`)
             }
             break
             case 'setexif': {
@@ -1120,7 +1156,6 @@ break
 		await naze.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
-	
 	case 'demote': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
@@ -1141,10 +1176,51 @@ break
 		await naze.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
-	case 'addprem': {
-       m.reply(`*_Error!_*\n*Fitur Addprem & Delprem belum siap*\n_Minggu Depan Siap`)
-		}
-		break
+	case 'addprem':
+				if (!isCreator) return m.reply(mess.owner)
+				{ q, args } {
+				if (args.length < 2)
+				return m.reply(
+				`Penggunaan :\n*#addprem* @tag waktu\n*#addprem* nomor waktu\n\nContoh : #addprem @tag 30d`
+				);
+				if (m.mentionedJid.length !== 0) {
+				for (let i = 0; i < m.mentionedJid.length; i++) {
+				prem.addPremiumUser(m.mentionedJid[0], args[1], premium);
+						}
+				naze.sendMessage(m.chat, { text: "Sukses Premium" }, { quoted: fkontak });
+					} else {
+				prem.addPremiumUser(args[0] + "@s.whatsapp.net", args[1], premium);
+				naze.sendMessage(m.chat, { text: "Sukses Via Nomor" }, { quoted: fkontak });
+						}
+					}
+				break
+			case 'delprem':
+				if (!isCreator) return m.reply(mess.owner)
+				{ q, args, arg } {
+				if (args.length < 1) return reply(`Penggunaan :\n*#delprem* @tag\n*#delprem* nomor`);
+				if (m.mentionedJid.length !== 0) {
+					for (let i = 0; i < m.mentionedJid.length; i++) {
+						premium.splice(prem.getPremiumPosition(m.mentionedJid[i], premium), 1);
+						fs.writeFileSync("./database/premium.json", JSON.stringify(premium));
+					}
+					naze.sendMessage(m.chat, { text: "Sukses Delete" }, { quoted: fkontak });
+				} else {
+				premium.splice(prem.getPremiumPosition(args[0] + "@s.whatsapp.net", premium), 1);
+				fs.writeFileSync("./database/premium.json", JSON.stringify(premium));
+				naze.sendMessage(m.chat, { text: "Sukses Via Nomer" }, { quoted: fkontak });
+				}
+				}
+				break
+		case 'listprem': {
+			if (!isCreator) return m.reply(mess.owner)
+			let data = require("./database/premium.json")
+			let txt = `*------「 LIST PREMIUM 」------*\n\n`
+                    for (let i of data) {
+                txt += `*Nomer : ${i.id}*\n*Expired : ${i.expired} Second*\n\n`
+                }
+            m.reply(txt)
+			}
+			break
 	    case 'setname': case 'setsubject': {
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
@@ -1182,12 +1258,21 @@ break
                 m.reply(mess.success)
                 }
                 break
+                case 'totag': {
+               if (!m.isGroup) throw mess.group
+               if (!isBotAdmins) throw mess.botAdmin
+               if (!isAdmins) throw mess.admin
+               if (!m.quoted) throw `Reply pesan dengan caption ${prefix + command}`
+               naze.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: participants.map(a => a.id) })
+               }
+               break
             case 'tagall': {
                 if (!m.isGroup) throw mess.group
+                if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-let teks = `══✪〘 *👥 Tag All* 〙✪══
+                let teks = `══✪〘 *👥 Tag All* 〙✪══
  
- ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
+                ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
                 for (let mem of participants) {
                 teks += `⭔ @${mem.id.split('@')[0]}\n`
                 }
@@ -1196,6 +1281,7 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 break
                 case 'hidetag': {
             if (!m.isGroup) throw mess.group
+            if (!isBotAdmins) throw mess.botAdmin
             if (!isAdmins) throw mess.admin
             naze.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
@@ -1215,7 +1301,6 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
 	    break
                case 'vote': {
             if (!m.isGroup) throw mess.group
-            if (!isAdmins) throw mess.admin
             if (m.chat in vote) throw `_Masih ada vote di chat ini!_\n\n*${prefix}hapusvote* - untuk menghapus vote`
             if (!text) throw `Masukkan Alasan Melakukan Vote, Example: *${prefix + command} Owner Ganteng*`
             m.reply(`Vote dimulai!\n\n*${prefix}upvote* - untuk ya\n*${prefix}devote* - untuk tidak\n*${prefix}cekvote* - untuk mengecek vote\n*${prefix}hapusvote* - untuk menghapus vote`)
@@ -1258,7 +1343,6 @@ let buttonsVote = [
             break
                case 'upvote': {
             if (!m.isGroup) throw mess.group
-            if (!isAdmins) throw mess.admin
             if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
@@ -1523,7 +1607,7 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Group Chat, Waktu Selesai ${anu.len
 for (let i of anu) {
 await sleep(1500)
 let txt = `「 Broadcast Bot 」\n\n${text}`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
+let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(i, buttons, txt, nyoutube, m, {quoted: fkontak})
 }
 m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
@@ -1537,7 +1621,7 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 
 		for (let yoi of anu) {
 		await sleep(1500)
 		let txt = `「 Broadcast Bot 」\n\n${text}`
-		let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
+		let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             await naze.sendButtonText(yoi, buttons, txt, nyoutube, m, {quoted: fkontak})
 		}
 		m.reply('Sukses Broadcast')
@@ -1554,7 +1638,7 @@ let unread = i.receiptTimestamp
 let waktu = read ? read : unread
 teks += `⌕ @${i.userJid.split('@')[0]}\n`
 teks += ` ┗━⌕ *Waktu :* ${moment(waktu * 1000).format('DD/MM/YY HH:mm:ss')} ⌕ *Status :* ${read ? 'Dibaca' : 'Terkirim'}\n\n`
-let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
+let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i.userJid], quoted: fkontak})
 }}
 break
@@ -1575,7 +1659,7 @@ break
                  for (let i of anu) {
                      let nama = store.messages[i].array[0].pushName
                      teks += `⬡ *Nama :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n\n───────────────\n\n`
-                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
+                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i], quoted: fkontak})
 }}
              break
@@ -1586,7 +1670,7 @@ await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [i], qu
                  for (let i of anu) {
                      let metadata = await naze.groupMetadata(i)
                      teks += `⬡ *Nama :* ${metadata.subject}\n⬡ *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Tidak diketahui'}\n⬡ *ID :* ${metadata.id}\n⬡ *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Member :* ${metadata.participants.length}\n\n─────────────────\n\n`
-                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: 'rules Bot❗' }, type: 1 }]
+                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '👑 SEWA' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
 await naze.sendButtonText(m.chat, buttons, teks, nyoutube, m, {mentions: [metadata.owner], quoted: fkontak})
 }}
              break
@@ -1741,7 +1825,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     await naze.sendButtonText(m.chat, buttons, `\`\`\`Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner \`\`\``)
                     throw false
                 }
-                m.reply('Oke👌')
+                m.reply('Ok')
                 let other = room.other(m.sender)
                 if (other) await naze.sendText(other, `\`\`\`Partner Telah Meninggalkan Sesi Anonymous\`\`\``, m)
                 delete this.anonymous[room.id]
@@ -1913,7 +1997,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 naze.sendContact(m.chat, global.owner, m)
             }
             break
-            case 'setmenu': {
+            /**case 'setmenu': {
             if (!isCreator) throw mess.owner
             let setbot = db.data.settings[botNumber]
                if (args[0] === 'templateImage'){
@@ -1955,7 +2039,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 naze.sendListMsg(m.chat, `pilih aja *${pushname}* Setmenu nya!`, nyoutube, `*Hello Kak* !`, `Pilih Set Menu`, sections, m)
                 }
             }
-            break
+            break**/
             
 //PEMBATAS CONVERT=======================================
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
@@ -1994,7 +2078,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 }
             }
             break
-            /**case 'nulis': case 'nulisteks': { FIX AJA KALO BISA
+            /**case 'nulis': case 'nulisteks': {
                 let jawab = `Pilih Nulis Bro\n*1.nuliskanan (tekslu)*\n*2.nuliskiri (tekslu)*\n*3.foliokanan (tekslu)*\n*4.foliokiri (tekslu)*\n\n_Silahkan Dipilih_`
                 let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'MAGER AMAT🗿' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {quoted: fkontak})
@@ -2233,13 +2317,13 @@ break
             m.reply(hm.result.message)
             }
             break
-            /**case 'geturl': {
+            case 'geturl': {
          	if (!text) throw `Example : ${prefix + command} url/link`
              m.reply(mess.wait)
              let igmk = await getBuffer(`${text}`)
-             naze.sendMessage(m.chat, { image: igmk, audio: igmk, video: igmk}, { quoted: ftroli })
+             naze.sendMessage(m.chat, { image: igmk}, { quoted: ftroli }).catch((err) => m.reply(mess.error))
          	}
-         break**/
+         break
             case 'toimage': case 'toimg': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Balas sticker dengan caption *${prefix + command}*`
@@ -2517,24 +2601,15 @@ break
             	m.reply(mess.wait)
                 anu = await fetchJson(`https://waifu.pics/api/sfw/waifu`)
                 buffer = await getBuffer(anu.url)
-                let buttons = [{buttonId: `sfw`, buttonText: {displayText: 'Next Image'}, type: 1},{buttonId: `simplemenu`, buttonText: {displayText: '⬅️Back'}, type: 1}]
-                let buttonMessage = {
-                    image: buffer,
-                    fileLength: jumlah,
-                    caption: `Random Waifu`,
-                    footer: nyoutube,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                naze.sendMessage(m.chat, buttonMessage, { quoted: m })
+                naze.sendMessage(m.chat, { image: buffer, caption: `Random Waifu`, footer: nyoutube}, { quoted: m })
             }
             break
 	    case 'couple': {
                 m.reply(mess.wait)
                 let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
                 let random = anu[Math.floor(Math.random() * anu.length)]
-                naze.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Cowok nya` }, { quoted: m })
-                naze.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Cewek nya` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
             }
 	    break
             case 'coffe': case 'kopi': {
@@ -2556,16 +2631,7 @@ break
             	m.reply(mess.wait)
                 anu = await fetchJson(`https://api.popcat.xyz/randomcolor`)
                 buffer = await getBuffer(anu.image)
-                let buttons = [{buttonId: `color`, buttonText: {displayText: 'Next Color'}, type: 1},{buttonId: `subsyt`, buttonText: {displayText: '🔴SUBSCRIBE'}, type: 1}]
-                let buttonMessage = {
-                    image: buffer,
-                    fileLength: jumlah,
-                    caption: `*Nama Warna : ${anu.name}*\n*Code : ${anu.hex}*`,
-                    footer: nyoutube,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                naze.sendMessage(m.chat, buttonMessage, { quoted: m })
+                naze.sendMessage(m.chat, { image: buffer, caption: `*Nama Warna : ${anu.name}*\n*Code : ${anu.hex}*`, footer: nyoutube}, { quoted: m })
             }
             break
             case 'wallpaper': {
@@ -2597,16 +2663,7 @@ break
                 teks += `${i.link}\n`
                 teks += `*${i.nama}`
                 }
-                let buttons = [{buttonId: `menu`, buttonText: {displayText: 'Menu🥀'}, type: 1}]
-                let buttonMessage = {
-                image: { url: 'https://telegra.ph/file/6cbed9af4ca002de3a801.jpg' },
-                fileLength: 12,
-                caption: teks,
-                footer: nyoutube,
-                buttons: buttons,
-                headerType: 4
-                }
-                naze.sendMessage(m.chat, buttonMessage, { quoted: fkontak })
+                naze.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/6cbed9af4ca002de3a801.jpg' }, caption: teks, footer: nyoutube}, { quoted: fkontak })
                 })} catch (e) {
 		        m.reply(mess.errmor)}
                 }
@@ -2632,31 +2689,13 @@ break
             case 'tinyurl': case 'shortlink': {
             	if (!text) throw 'Masukkan Query Link!'
                 let anu = await axios.get(`https://tinyurl.com/api-create.php?url=${text}`)
-                let buttons = [
-                    {buttonId: `hehehe`, buttonText: {displayText: '🙏THANKS'}, type: 1}
-                ]
-                let buttonMessage = {
-                    text: anu.data,
-                    footer: nyoutube,
-                    buttons: buttons,
-                    headerType: 2
-                }
-                naze.sendMessage(m.chat, buttonMessage, { quoted: fdoc })
+                naze.sendMessage(m.chat,{ text: anu.data + `\nNih Bro`}, { quoted: fdoc })
             }
             break
             case 'linkpoi': {
             	if (!text) throw 'Masukkan Query Link!'
                 let poi = await fetchJson(`https://linkpoi.ga/api.php?url=${text}`)
-                let buttons = [
-                    {buttonId: `hehehe`, buttonText: {displayText: '🙏THANKS'}, type: 1}
-                ]
-                let buttonMessage = {
-                    text: poi.shorturl,
-                    footer: nyoutube,
-                    buttons: buttons,
-                    headerType: 2
-                }
-                naze.sendMessage(m.chat, buttonMessage, { quoted: fdoc })
+                naze.sendMessage(m.chat, { text: poi.shorturl + `\nNih Bro`}, { quoted: fdoc })
             }
             break
             
@@ -2668,7 +2707,7 @@ break
             	}
             break
             case 'candy': case 'christmas': case '3dchristmas': case 'sparklechristmas': case 'holographic':
-case 'deepsea': case 'scifi': case 'rainbow': case 'waterpipe': case 'spooky': case 'karbon': case 'colorneon': 
+case 'deepsea': case 'scifi': case 'rainbow': case 'waterpipe': case 'spooky': case 'karbon': case 'neonlight2': 
 case 'pencil': case 'circuit': case 'discovery': case 'metalic': case 'fiction': case 'demon': case '3dbox': 
 case 'transformer': case 'berry': case 'thunder': case 'magma': case '3dstone': case 'greenneon': 
 case 'neonlight': case 'glitch': case 'harrypotter': case 'brokenglass': case 'papercut': case 'lion2': 
@@ -2681,7 +2720,7 @@ case 'lava': case 'rock': case 'bloodglas': case 'hallowen': case 'darkgold': ca
              m.reply(mess.wait)
              let link
              if (/candy/.test(command)) link = 'https://textpro.me/create-christmas-candy-cane-text-effect-1056.html'
-             if (/colorneon/.test(command)) link = 'https://textpro.me/neon-light-text-effect-with-galaxy-style-981.html'
+             if (/neonlight2/.test(command)) link = 'https://textpro.me/neon-light-text-effect-with-galaxy-style-981.html'
              if (/christmas/.test(command)) link = 'https://textpro.me/christmas-tree-text-effect-online-free-1057.html'
              if (/3dchristmas/.test(command)) link = 'https://textpro.me/3d-christmas-text-effect-by-name-1055.html'
              if (/sparklechristmas/.test(command)) link = 'https://textpro.me/sparkles-merry-christmas-text-effect-1054.html'
@@ -2746,7 +2785,7 @@ case 'lava': case 'rock': case 'bloodglas': case 'hallowen': case 'darkgold': ca
              if (/1917/.test(command)) link = 'https://textpro.me/1917-style-text-effect-online-980.html'
              if (/leaves/.test(command)) link = 'https://textpro.me/natural-leaves-text-effect-931.html'
              let anu = await maker.textpro(link, q)
-             naze.sendMessage(m.chat, { image: { url: anu }, caption: `Made by ${global.botname}` }, { quoted: fkontak })
+             naze.sendMessage(m.chat, { image: { url: anu }, caption: `Made by ${global.botname},For my Darling ` }, { quoted: m })
              }
              break
              case 'glitch2': case 'harrypot': case 'graffiti': case 'pornhub': case 'glitch3': case '3dspace': case 'lion': case 'wolf': case 'retro': case '8bit': {
@@ -2766,7 +2805,7 @@ case 'lava': case 'rock': case 'bloodglas': case 'hallowen': case 'darkgold': ca
              if (/retro/.test(command)) link = 'https://textpro.me/create-3d-retro-text-effect-online-free-1065.html'
              if (/8bit/.test(command)) link = 'https://textpro.me/video-game-classic-8-bit-text-effect-1037.html'
              let anu = await maker.textpro(link, [`${teks1}`,`${teks2}`])
-             naze.sendMessage(m.chat, { image: { url: anu }, caption: `Made by ${global.botname}` }, { quoted: fkontak })
+             naze.sendMessage(m.chat, { image: { url: anu }, caption: `Made by ${global.botname},For my Darling ` }, { quoted: m })
              }
              break
             
@@ -2819,7 +2858,7 @@ encmedia = await naze.sendImageAsSticker(m.chat, wifegerakx, m, { packname: glob
 await fs.unlinkSync(encmedia)
 }
 break
-case 'mukelu': case 'bot kayak': case 'bot nya': {
+case 'mukelu': case 'lu': {
 var ano = await fetchJson('https://raw.githubusercontent.com/rashidsiregar28/data/main/mukelu')
 var wifegerak = ano.split('\n')
 var wifegerakx = wifegerak[Math.floor(Math.random() * wifegerak.length)]
@@ -3167,16 +3206,31 @@ break
                 }
             }
             break
+            case 'mediafire': {
+if (!text) throw 'Masukkan Query Link!'
+if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return m.reply(`The link you provided is invalid`)
+const baby1 = await mediafireDl(text)
+if (baby1[0].size.split('MB')[0] >= 999) return m.reply('*File Over Limit* '+util.format(baby1))
+const result4 = `*MEDIAFIRE DOWNLOADER*
+				
+*Name* : ${baby1[0].nama}
+*Size* : ${baby1[0].size}
+*Mime* : ${baby1[0].mime}
+*Link* : ${baby1[0].link}`
+m.reply(`${result4}`)
+naze.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }).catch ((err) => m.reply(mess.error))
+}
+break
              case 'tiktok': case 'tiktoknowm': {
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
+                let anu = await fetchJson(`https://hadi-api.cf/api/tiktok?url=${text}`)
                 let buttons = [
                     {buttonId: `allmenu`, buttonText: {displayText: '📖List Menu'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.result.nowm },
+                    video: { url: anu.result.video.nowm },
                     caption: `Download From ${text}`,
                     footer: nyoutube,
                     buttons: buttons,
@@ -3206,7 +3260,7 @@ break
             case 'tiktokmp3': case 'tiktokaudio': {
                 if (!text) throw 'Masukkan Query Link!'
                 m.reply(mess.wait)
-                let anu = await fetchJson(`https://anabotofc.herokuapp.com/api/download/tiktok2?url=${text}&apikey=AnaBot`)
+                let anu = await fetchJson(`https://hadi-api.cf/api/tiktok?url=${text}`)
                 let buttons = [
                     {buttonId: `allmenu`, buttonText: {displayText: '📖List Menu'}, type: 1},
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1}
@@ -3218,7 +3272,7 @@ break
                     headerType: 2
                 }
                 let msg = await naze.sendMessage(m.chat, buttonMessage, { quoted: m })
-                naze.sendMessage(m.chat, { audio: { url: anu.result.nowm }, mimetype: 'audio/mpeg'}, { quoted: msg })
+                naze.sendMessage(m.chat, { audio: { url: anu.result.audio_only.audio1 }, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
 	        case 'instagram': case 'ig': case 'igdl': {
@@ -3249,8 +3303,11 @@ break
                 naze.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
             break
-            /**case 'twitter': case 'td': case 'twitterdl': {            
-             if (!text) return m.reply(`Where is the link?`)
+            case 'twitter': case 'td': case 'twitterdl': {
+            m.reply(`Fitur Sedang Error\nDalam Perbaikan`)
+             }
+             break      
+             /**if (!text) return m.reply(`Where is the link?`)
                 if (!isUrl(args[0]) && !args[0].includes('twitter.com')) return m.reply(`The link you provided is not valid`)
                 xfar.Twitter(`${text}`).then(async (data) => {                    
                     let txt = `*TWITTER DOWNLOADER*\n\n`
@@ -3359,7 +3416,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
 		naze.sendMessage(m.chat, {document: yy, mimetype: 'application/pdf', fileName: `iqra${text}.pdf`}, {quoted:m}).catch ((err) => m.reply(oh))
 		}
 		break
-		/**case 'juzamma': {
+		/**case 'juzamma': {  ERROR BRO, FIX AJA KALO MAU
 		if (args[0] === 'pdf') {
 		m.reply(mess.wait)
 		naze.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pdf'}, mimetype: 'application/pdf', fileName: 'juz-amma-arab-latin-indonesia.pdf'}, {quoted:m})
@@ -3584,15 +3641,12 @@ let capt = `⭔ Title: ${judul}
             case 'rules': {
 rules = `╭──❍ *Rules BOT*
 │
-│ *No Spam❗*
-│ *No Kirvir❗*
-│ *No Tlpn/vc❗*
+│ *Intinya Jangan Spam❗*
 │
 ╰────❍`
 let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '👑Sewa' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, rules, nyoutube, m, {quoted: fkontak})
             }
-            
             break
             case 'sponsor': {
             if (!m.isGroup) throw mess.group
@@ -3609,7 +3663,7 @@ let kominfo = `628119224545@s.whatsapp.net`
 let alfamart = `628111500959@s.whatsapp.net`
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
-            let jawab = `*Bot by Jah* 
+            let jawab = `*Bot by JahOFC* 
 -Creator :  @${ownernya.split('@')[0]}\n-Lu : @${me.split('@')[0]}\n-Powered  : @${ini_mark.split('@')[0]}\n- :  @${qontak.split('@')[0]}\n- :  @${dana.split('@')[0]}\n- :  @${shopeeotp.split('@')[0]}\n- :  @${shopee.split('@')[0]}\n- :  @${tokopedia.split('@')[0]}\n- :  @${smartfrend.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${facebook.split('@')[0]}\n- :  @${pasarpolis.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${kominfo.split('@')[0]}\n- :  @${alfamart.split('@')[0]}`
             let ments = [ownernya, me, ini_mark, qontak, dana, shopeeotp, shopee, tokopedia, smartfrend, getcontact, facebook, pasarpolis, kominfo, alfamart]
             let buttons = [
@@ -3637,7 +3691,6 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Prefix* :「 MULTI-PREFIX 」
 ├ *Total Hit* : ${jumlahcmd}
 ├ *Total Hit Today* : ${jumlahharian}
-├ *online selama* : ${runtime(process.uptime())}
 ╰──❍
 
 ╭──❍「 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼 」❍
@@ -3647,7 +3700,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Wit* : ${timur} WIT
 ╰──❍`
             let ments = [ownernya, me, ini_mark]
-            let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: 'ALL MENU' }, type: 1 },{ buttonId: 'help', buttonText: { displayText: 'SIMPLE MENU' }, type: 1 }]
+            let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             let buttonMessage = {
   document: fs.readFileSync('./media/doc/fake.pptx'),
   fileName : akulaku + (` | Halo ${pushname}`),
@@ -3679,9 +3732,8 @@ let alfamart = `628111500959@s.whatsapp.net`
             let kukiw = `*Kak ${pushname}*`
                 let sections = [
                 {
-	           title: ' ∫ » MENU UTAMA–––––––·•',
+	           title: ' ∫ » Sewa Bot? –––––––·•',
 	           rows: [
-	            {title: "🔹 • ALL MENU", rowId: `allmenu`, description: `KLIK UNTUK ALL MENU`},
 	            {title: "〽️ • Sewa", rowId: `donasi`, description: `KLIK UNTUK SEWA BOT`},
                 {title: "📴 • Owner", rowId: `owner`, description: `KLIK UNTUK BERTANYA KEPADA OWNER`}
 	            ]
@@ -3704,13 +3756,14 @@ let alfamart = `628111500959@s.whatsapp.net`
                 {title: "✦  「 Anonymous 」", rowId: `manonymous`, description: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
                 {title: "✦  「 Islamic 」", rowId: `mislamic`, description: `╰ ► 🕌Masyaallah Brother`},
                 {title: "✦  「 Voice 」", rowId: `mvoice`, description: `╰ ► 🎶Req Lagu Apa Ngab?`},
+                {title: "✦  「 Owner 」", rowId: `mowner`, description: `╰ ► 🎟Jangan Ganggu Ownerku😡`}
                 ]
                 },{
 	           title: ' ∫ » SUPPORT ME –––––––·•',
 	           rows: [
 	            {title: "🎟 • Donasi", rowId: `donasi`, description: `╰ ► 💰 Donasi ♕︎`},
                 {title: "🔴 • Subscribe", rowId: `subsyt`, description: `╰ ► 📢 Thanks For Subscribe ♕︎`},
-                {title: "?? • Github", rowId: `sc`, description: `╰ ► 🎷 Follow My Github ♕︎`}
+                {title: "📚 • Github", rowId: `sc`, description: `╰ ► 🎷 Follow My Github ♕︎`}
 	]
   },
 ]
@@ -3986,7 +4039,6 @@ cnvert = `╭──❍ *Convert Menu*
 │⭔ ${prefix}tovn
 │⭔ ${prefix}tomp3
 │⭔ ${prefix}toaudio
-│⭔ ${prefix}toqr
 │⭔ ${prefix}ebinary
 │⭔ ${prefix}dbinary
 │⭔ ${prefix}styletext
@@ -4013,7 +4065,7 @@ min = `╭──❍ *Main Menu*
 │⭔ ${prefix}speedtest
 │⭔ ${prefix}menfes
 │⭔ ${prefix}tinyurl [link]
-│⭔ ${prefix}linkpoi [link]
+│⭔ ${prefix}shrturl [link]
 │
 ╰────❍`
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
@@ -4046,7 +4098,7 @@ aonymous = `╭──❍ *Anonymous Menu*
 │⭔ ${prefix}keluar
 │
 ╰────❍`
-let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: 'SEWA BOT' }, type: 1 }]
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, aonymous, nyoutube, m, {quoted: fkontak})
             }
             break
@@ -4083,7 +4135,26 @@ vice = `╭──❍ *Voice Changer*
 let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, vice, nyoutube, m, {quoted: fkontak})
             }
-
+            break
+            case 'mowner': {
+oner = `╭──❍ *Owner Menu*
+│
+│⭔ ${prefix}react [emoji]
+│⭔ ${prefix}chat [option]
+│⭔ ${prefix}join [link]
+│⭔ ${prefix}leave
+│⭔ ${prefix}block @user
+│⭔ ${prefix}unblock @user
+│⭔ ${prefix}bcgroup [text]
+│⭔ ${prefix}bcall [text]
+│⭔ ${prefix}setppbot [image]
+│⭔ ${prefix}setexif
+│⭔ ${prefix}setmenu [option]
+│
+╰────❍`
+let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back' }, type: 1 },{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+            await naze.sendButtonText(m.chat, buttons, oner, nyoutube, m, {quoted: fkontak})
+            }
             break
             case 'allmenu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
@@ -4308,7 +4379,6 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │⭔ ${prefix}tovn
 │⭔ ${prefix}tomp3
 │⭔ ${prefix}toaudio
-│⭔ ${prefix}toqr
 │⭔ ${prefix}ebinary
 │⭔ ${prefix}dbinary
 │⭔ ${prefix}styletext
@@ -4392,8 +4462,8 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
 │⭔ ${prefix}setmenu [option]
 │
 ╰────❍
-_Link Grup_\n_https://chat.whatsapp.com/LqbvV6R1EJpIISHIU6S28T_`
-                let buttons = [{ buttonId: 'donate', buttonText: { displayText: 'SEWA BOT' }, type: 1 },{ buttonId: 'help', buttonText: { displayText: 'SIMPEL MENU' }, type: 1 }]
+_Donasi Ngab_\n_Jangan Ngarep Free Mulu_`
+                let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
             }
             break
